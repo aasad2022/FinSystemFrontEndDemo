@@ -5,39 +5,105 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+<!--              <form cForm>-->
+<!--                <h1>Login</h1>-->
+<!--                <p class="text-medium-emphasis">Sign In to your account</p>-->
+<!--                <c-input-group class="mb-3">-->
+<!--                  <span cInputGroupText>-->
+<!--                    <svg cIcon name="cilUser"></svg>-->
+<!--                  </span>-->
+<!--                  <input autoComplete="username" cFormControl placeholder="Username" />-->
+<!--                </c-input-group>-->
+<!--                <c-input-group class="mb-4">-->
+<!--                  <span cInputGroupText>-->
+<!--                    <svg cIcon name="cilLockLocked"></svg>-->
+<!--                  </span>-->
+<!--                  <input-->
+<!--                    autoComplete="current-password"-->
+<!--                    cFormControl-->
+<!--                    placeholder="Password"-->
+<!--                    type="password"-->
+<!--                  />-->
+<!--                </c-input-group>-->
+<!--                <c-row>-->
+<!--                  <c-col xs="6">-->
+<!--                    <button cButton class="px-4" color="primary">-->
+<!--                      Login-->
+<!--                    </button>-->
+<!--                  </c-col>-->
+<!--                  <c-col class="text-right" xs="6">-->
+<!--                    <button cButton class="px-0" color="link">-->
+<!--                      Forgot password?-->
+<!--                    </button>-->
+<!--                  </c-col>-->
+<!--                </c-row>-->
+<!--              </form>-->
+              <form
+                *ngIf="!isLoggedIn"
+                name="form"
+                (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate
+              >
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
-                <c-input-group class="mb-3">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
-                </c-input-group>
-                <c-input-group class="mb-4">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
+                <div class="form-group">
+                  <label cLabel for="username">Username</label>
+                  <input cFormControl
+                    type="text"
+                    name="username"
+                    [(ngModel)]="form.username"
+                    required
+                    #username="ngModel"
                   />
-                </c-input-group>
-                <c-row>
-                  <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
-                      Login
-                    </button>
-                  </c-col>
-                  <c-col class="text-right" xs="6">
-                    <button cButton class="px-0" color="link">
-                      Forgot password?
-                    </button>
-                  </c-col>
-                </c-row>
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && username.invalid"
+                  >
+                    Username is required!
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label cLabel for="password">Password</label>
+                  <input cFormControl
+                    type="password"
+                    name="password"
+                    [(ngModel)]="form.password"
+                    required
+                    minlength="4"
+                    #password="ngModel"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && password.invalid"
+                  >
+                    <div *ngIf="password.errors?.['required']">Password is required</div>
+                    <div *ngIf="password.errors?.['minlength']">
+                      Password must be at least 4 characters
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block">
+                    Login
+                  </button>
+                </div>
+                <div class="form-group">
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && isLoginFailed"
+                  >
+                    Login failed: {{ errorMessage }}
+                  </div>
+                </div>
               </form>
+
+<!--              <div class="alert alert-success" *ngIf="isLoggedIn">-->
+<!--                Logged in as {{ roles }}.-->
+<!--              </div>-->
             </c-card-body>
           </c-card>
           <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
