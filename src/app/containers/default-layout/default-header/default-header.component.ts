@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
+import {TokenStorageService} from "../../../services/login/token-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-default-header',
@@ -15,7 +17,12 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
 
-  constructor(private classToggler: ClassToggleService) {
+  constructor(private router: Router,private tokenStorageService: TokenStorageService,private classToggler: ClassToggleService) {
     super();
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    // window.location.reload();
+    this.router.navigate(['/login']);
   }
 }

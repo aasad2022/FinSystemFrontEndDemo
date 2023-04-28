@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
+import {UsersComponent} from "../users/users.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,13 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'colors',
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'Users',
+        },
       },
       {
         path: 'colors',
