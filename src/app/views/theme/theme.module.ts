@@ -9,6 +9,7 @@ import { TypographyComponent } from './typography.component';
 
 // Theme Routing
 import { ThemeRoutingModule } from './theme-routing.module';
+import {UsersComponent} from "./users.component";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ThemeRoutingModule } from './theme-routing.module';
     TabsModule
   ],
   declarations: [
+    UsersComponent,
     ColorsComponent,
     ThemeColorComponent,
     TypographyComponent,
