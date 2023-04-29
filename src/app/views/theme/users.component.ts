@@ -7,15 +7,15 @@ import { DOCUMENT } from '@angular/common';
 
 import { getStyle, rgbToHex } from '@coreui/utils';
 
-@Component({
-  templateUrl: 'users.component.html'
-})
+// @Component({
+//   templateUrl: 'users.component.html'
+// })
 
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, AfterViewInit {
 
@@ -65,27 +65,27 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
 }
-@Component({
-  selector: 'app-theme-color',
-  template: `
-<!--    <c-col xl='2' md='4' sm='6' xs='12' class='my-4 ms-4'>-->
-<!--      <div [ngClass]='colorClasses' style='padding-top: 75%;'></div>-->
-<!--      <ng-content></ng-content>-->
-<!--    </c-col>-->
-  `
-})
-export class ThemeColorComponent implements OnInit {
-  @Input() color = '';
-  public colorClasses = {
-    'theme-color w-75 rounded mb-3': true
-  };
-
-  @HostBinding('style.display') display = 'contents';
-
-  ngOnInit(): void {
-    this.colorClasses = {
-      ...this.colorClasses,
-      [`bg-${this.color}`]: !!this.color
-    };
-  }
-}
+// @Component({
+//   selector: 'app-theme-color',
+//   template: `
+//     <c-col xl='2' md='4' sm='6' xs='12' class='my-4 ms-4'>
+//       <div [ngClass]='colorClasses' style='padding-top: 75%;'></div>
+//       <ng-content></ng-content>
+//     </c-col>
+//   `
+// })
+// export class ThemeColorComponent implements OnInit {
+//   @Input() color = '';
+//   public colorClasses = {
+//     'theme-color w-75 rounded mb-3': true
+//   };
+//
+//   @HostBinding('style.display') display = 'contents';
+//
+//   ngOnInit(): void {
+//     this.colorClasses = {
+//       ...this.colorClasses,
+//       [`bg-${this.color}`]: !!this.color
+//     };
+//   }
+// }

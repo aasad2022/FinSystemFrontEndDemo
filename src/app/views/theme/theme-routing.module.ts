@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
-import {UsersComponent} from "../users/users.component";
+import {UsersComponent} from "./users.component";
 
 const routes: Routes = [
   {

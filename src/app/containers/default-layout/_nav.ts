@@ -14,17 +14,15 @@ export const navItems: INavData[] = [
     title: true,
     name: 'Fin'
   },
-  {
-  // <li class="nav-item">
-  // <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">Currency Exchange</a>
-  // </li>
-    name: 'Users',
-    url: '/users',
-    iconComponent: { name: 'cil-drop' }
-  },
+
   {
     title: true,
     name: 'Theme'
+  },
+  {
+    name: 'Users',
+    url: '/theme/users',
+    iconComponent: { name: 'cil-drop' }
   },
   {
     name: 'Colors',
