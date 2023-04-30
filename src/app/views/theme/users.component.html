@@ -13,13 +13,17 @@
             <th class="dt-center" scope="col">#</th>
             <th class="dt-center" scope="col">الاسم</th>
             <th class="dt-center" scope="col">البريد الالكتروني</th>
+            <th class="dt-center" scope="col"></th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.firstName }}</td>
+            <td>{{ user.userId }}</td>
+            <td>{{ user.username }}</td>
             <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+            <td>
+              <a routerLink="/users/{{ user.userId }}/edit" >Edit</a>
+            </td>
           </tr>
           </tbody>
         </table>
