@@ -1,20 +1,29 @@
-<div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>قائمة المستخدمين</strong>
+        <!--      <small>Captions</small>-->
+      </c-card-header>
+      <c-card-body>
+<!--        <table [striped]="true" [hover]="true" [bordered]="true" cTable>-->
+        <table [striped]="true" [hover]="true" [bordered]="true" cTable datatable [dtOptions]="dtOptions" >
+          <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
+            <th class="dt-center" scope="col">#</th>
+            <th class="dt-center" scope="col">الاسم</th>
+            <th class="dt-center" scope="col">البريد الالكتروني</th>
           </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
           <tr *ngFor="let user of users">
             <td>{{ user.id }}</td>
             <td>{{ user.firstName }}</td>
             <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
           </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

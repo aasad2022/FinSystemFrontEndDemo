@@ -47,7 +47,19 @@
               >
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
-                <div class="form-group">
+                <div class="mb-3">
+
+<!--                  <label cLabel for="username">Username</label>-->
+<!--                  <input cFormControl-->
+<!--                         type="text"-->
+<!--                         name="username"-->
+<!--                         [(ngModel)]="form.username"-->
+<!--                         required-->
+<!--                         #username="ngModel"-->
+<!--                  />-->
+<!--                  <c-form-feedback [valid]="false">Username is required!</c-form-feedback>-->
+
+
                   <label cLabel for="username">Username</label>
                   <input cFormControl
                     type="text"
@@ -64,7 +76,7 @@
                     Username is required!
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                   <label cLabel for="password">Password</label>
                   <input cFormControl
                     type="password"
@@ -85,7 +97,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                   <button class="btn btn-primary btn-block">
                     Login
                   </button>
@@ -102,7 +114,7 @@
               </form>
 
 <!--              <div class="alert alert-success" *ngIf="isLoggedIn">-->
-<!--                Logged in as {{ roles }}.-->
+<!--                 <script> alert(';;'); parent.location="/dashboard"; </script>-->
 <!--              </div>-->
             </c-card-body>
           </c-card>

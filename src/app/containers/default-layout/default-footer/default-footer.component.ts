@@ -10,4 +10,5 @@ export class DefaultFooterComponent extends FooterComponent {
   constructor() {
     super();
   }
+  currentYear: number = new Date().getFullYear();
 }

@@ -1,91 +1,36 @@
 import {User} from "../../models/user";
 import {UserService} from "../../services/user-service.service";
-
-
-import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
-import { getStyle, rgbToHex } from '@coreui/utils';
-
-// @Component({
-//   templateUrl: 'users.component.html'
-// })
-
+import {Component, OnInit} from '@angular/core';
+import DataTables from "datatables.net-dt";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit, AfterViewInit {
 
+export class UsersComponent implements OnInit {
   users: User[] | undefined;
 
-  constructor(private userService: UserService,@Inject(DOCUMENT) private document: Document,
-              private renderer: Renderer2) {
-
+  constructor(private userService: UserService) {
   }
+
+
+  dtOptions: DataTables.Settings = {};
+
+
+
+
   ngOnInit() {
     this.userService.findAll().subscribe(
       data => {
         console.log(data.content);
-      this.users = data.content;
-    }
-    )
-
-    ;
-  }
-
-  public themeColors(): void {
-    Array.from(this.document.querySelectorAll('.theme-color')).forEach(
-      // @ts-ignore
-      (el: HTMLElement) => {
-        const background = getStyle('background-color', el);
-        const table = this.renderer.createElement('table');
-        table.innerHTML = `
-          <table class='table w-100'>
-            <tr>
-              <td class='text-muted'>HEX:</td>
-              <td class='font-weight-bold'>${rgbToHex(background)}</td>
-            </tr>
-            <tr>
-              <td class='text-muted'>RGB:</td>
-              <td class='font-weight-bold'>${background}</td>
-            </tr>
-          </table>
-        `;
-        this.renderer.appendChild(el.parentNode, table);
-        // @ts-ignore
-        // el.parentNode.appendChild(table);
+        this.users = data.content;
       }
-    );
+    )
+    ;
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
   }
-  ngAfterViewInit(): void {
-    this.themeColors();
-  }
-
 }
-// @Component({
-//   selector: 'app-theme-color',
-//   template: `
-//     <c-col xl='2' md='4' sm='6' xs='12' class='my-4 ms-4'>
-//       <div [ngClass]='colorClasses' style='padding-top: 75%;'></div>
-//       <ng-content></ng-content>
-//     </c-col>
-//   `
-// })
-// export class ThemeColorComponent implements OnInit {
-//   @Input() color = '';
-//   public colorClasses = {
-//     'theme-color w-75 rounded mb-3': true
-//   };
-//
-//   @HostBinding('style.display') display = 'contents';
-//
-//   ngOnInit(): void {
-//     this.colorClasses = {
-//       ...this.colorClasses,
-//       [`bg-${this.color}`]: !!this.color
-//     };
-//   }
-// }

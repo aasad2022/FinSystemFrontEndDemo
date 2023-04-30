@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
+// start for rtl
+// import { LOCALE_ID } from '@angular/core';
+// import { registerLocaleData } from '@angular/common';
+// import localeAr from '@angular/common/locales/ar';
+// registerLocaleData(localeAr);
+// end for rtl
+
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DataTablesModule } from "angular-datatables";
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -89,11 +96,13 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     HttpClientModule,
+    DataTablesModule,
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
+      // provide: LOCALE_ID, useValue: 'ar',
     },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
