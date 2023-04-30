@@ -10,17 +10,13 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
-  {
-    title: true,
-    name: 'Fin'
-  },
 
   {
     title: true,
-    name: 'Theme'
+    name: 'مدير النظام'
   },
   {
-    name: 'Users',
+    name: 'قائمة المستخدمين',
     url: '/theme/users',
     iconComponent: { name: 'cil-drop' }
   },
